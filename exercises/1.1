@@ -1,0 +1,22 @@
+Start 3 containers from image that does not automatically exit, such as nginx, detached.
+$ docker run -d nginx
+$ docker run -d nginx
+$ docker run -d nginx
+
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS               NAMES
+377a584769d0        nginx               "nginx -g 'daemon of…"   10 seconds ago       Up 8 seconds        80/tcp              awesome_mahavira
+578f2056021e        nginx               "nginx -g 'daemon of…"   12 seconds ago       Up 10 seconds       80/tcp              distracted_wilson
+4b4b9d55c2ad        nginx               "nginx -g 'daemon of…"   About a minute ago   Up About a minute   80/tcp              mystifying_lederberg
+
+
+Stop 2 of the containers leaving 1 up.
+$ docker stop $(docker ps -q | head -n 2)
+377a584769d0
+578f2056021e
+
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                      PORTS               NAMES
+377a584769d0        nginx               "nginx -g 'daemon of…"   About a minute ago   Exited (0) 25 seconds ago                       awesome_mahavira
+578f2056021e        nginx               "nginx -g 'daemon of…"   About a minute ago   Exited (0) 26 seconds ago                       distracted_wilson
+4b4b9d55c2ad        nginx               "nginx -g 'daemon of…"   2 minutes ago        Up 2 minutes                80/tcp              mystifying_lederberg

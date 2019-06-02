@@ -1,0 +1,36 @@
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                      PORTS               NAMES
+377a584769d0        nginx               "nginx -g 'daemon of…"   About a minute ago   Exited (0) 25 seconds ago                       awesome_mahavira
+578f2056021e        nginx               "nginx -g 'daemon of…"   About a minute ago   Exited (0) 26 seconds ago                       distracted_wilson
+4b4b9d55c2ad        nginx               "nginx -g 'daemon of…"   2 minutes ago        Up 2 minutes                80/tcp              mystifying_lederberg
+
+$ docker container prune
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+377a584769d03b89b6b339bba64ca906cff94fd316e1d7dca153ee775615e488
+578f2056021ebde10740a89677b80af55b059566913e49d6cfbb4d1bd4dcc00b
+
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+4b4b9d55c2ad        nginx               "nginx -g 'daemon of…"   5 minutes ago       Up 5 minutes        80/tcp              mystifying_lederberg
+
+$ docker stop $(docker ps -aq)
+4b4b9d55c2ad
+
+$ docker rm mystifying_lederberg 
+mystifying_lederberg
+
+$ docker rmi 53f3fd8007f7 
+Untagged: nginx:latest
+Untagged: nginx@sha256:23b4dcdf0d34d4a129755fc6f52e1c6e23bb34ea011b315d87e193033bcd1b68
+Deleted: sha256:53f3fd8007f76bd23bf663ad5f5009c8941f63828ae458cef584b5f85dc0a7bf
+Deleted: sha256:50183b8336fcc9552a55c86895cdfdfb6f1bb349a951da638f22f645ce235926
+Deleted: sha256:093a0ead7cedbef266292a1b08e478489ed6584170f0d82127c5ac9a10fd8303
+Deleted: sha256:6270adb5794c6987109e54af00ab456977c5d5cc6f1bc52c1ce58d32ec0f15f4
+
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+$ docker images 
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
